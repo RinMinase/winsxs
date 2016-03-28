@@ -22,7 +22,7 @@ takeown /f "%windir%\winsxs" /r
 
 icacls "%windir%\winsxs" /grant "%userdomain%\%username%":(F) /t
 
-compact /c /s:"%windir%\winsxs" /i
+compact /c /s:"%windir%\winsxs" /a /i /f /exe:lzx
 
 icacls "%windir%" /restore "%windir%\winsxs.acl"
 
@@ -35,6 +35,6 @@ sc config TrustedInstaller start= demand
 echo Compressing "Windows\Installer" Folder
 
 @echo on
-compact /s:"%windir%\installer" /c /a /i
+compact /c /s:"%windir%\installer" /a /i /f /exe:lzx
 
 pause
