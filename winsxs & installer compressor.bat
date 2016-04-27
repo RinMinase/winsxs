@@ -16,15 +16,15 @@ sc stop TrustedInstaller
 sc config msiserver start= disabled
 sc config TrustedInstaller start= disabled
 
-icacls "%windir%\winsxs" /save "%windir%\winsxs.acl" /t
+icacls "%windir%\winsxs" /save "%windir%\winsxs.acl" /t /c
 
 takeown /f "%windir%\winsxs" /r
 
-icacls "%windir%\winsxs" /grant "%userdomain%\%username%":(F) /t
+icacls "%windir%\winsxs" /grant "%userdomain%\%username%":(F) /t /c
 
 compact /c /s:"%windir%\winsxs" /a /i /f /exe:lzx
 
-icacls "%windir%" /restore "%windir%\winsxs.acl"
+icacls "%windir%" /restore "%windir%\winsxs.acl" /c
 
 del "%windir%\winsxs.acl"
 
