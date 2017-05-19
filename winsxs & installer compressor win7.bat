@@ -4,8 +4,6 @@ echo Author: Rin Minase
 echo Commpany: Minase Conglomerate
 echo.
 echo.
-echo Compressing "Windows\WinSxS" or the Windows Side-by-Side Folder
-echo.
 echo Preparing compression algorithm in 10 seconds
 timeout /t 10 /nobreak
 
@@ -27,6 +25,20 @@ compact /c /s:"%windir%\winsxs" /a /i /f
 icacls "%windir%" /restore "%windir%\winsxs.acl" /c
 
 del "%windir%\winsxs.acl"
+
+
+icacls "%windir%\System32\DriverStore\FileRepository" /save "%windir%\FileRepository.acl" /t /c
+
+takeown /f "%windir%\System32\DriverStore\FileRepository" /r
+
+icacls "%windir%\System32\DriverStore\FileRepository" /grant "%userdomain%\%username%":(F) /t /c
+
+compact /c /s:"%windir%\System32\DriverStore\FileRepository" /a /i /f
+
+icacls "%windir%\System32\DriverStore" /restore "%windir%\FileRepository.acl" /c
+
+del "%windir%\FileRepository.acl"
+
 
 sc config msiserver start= demand
 sc config TrustedInstaller start= demand
