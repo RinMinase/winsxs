@@ -49,7 +49,7 @@ icacls "C:\Program Files\WindowsApps" /grant "%userdomain%\%username%":(F) /t /c
 
 compact /c /s:"C:\Program Files\WindowsApps" /a /i /f /exe:lzx
 
-icacls "C:\Program Files\WindowsApps" /setowner "NT SERVICE\TrustedInstaller" /t 
+icacls "C:\Program Files\WindowsApps" /setowner "NT SERVICE\TrustedInstaller" /t
 
 icacls "C:\Program Files" /restore "C:\WindowsApps.acl" /c
 
