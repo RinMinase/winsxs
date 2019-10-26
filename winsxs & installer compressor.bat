@@ -1,7 +1,6 @@
 @echo off
 echo This Compressor is made thanks to...
 echo Author: Rin Minase
-echo Commpany: Minase Conglomerate
 echo.
 echo.
 echo Preparing compression algorithm in 10 seconds
